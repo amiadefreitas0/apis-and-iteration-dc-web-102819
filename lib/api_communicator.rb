@@ -24,12 +24,17 @@ def get_character_movies_from_api(character_name)
 end
 
 def print_movies(films)
-  response = requests.get(films)
-data = response.json()
+  films.map {|address|  
+  res = RestClient.get(address)
+ b = JSON.parse(res)
+  puts b["title"]
+  }
+  
+  #for person in data['results']:
 
-for person in data['results']:
-    print(person['name'])
-end
+    # print(person['name'])
+  end
+ 
 
 def show_character_movies(character)
   films = get_character_movies_from_api(character)
